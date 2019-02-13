@@ -1,0 +1,38 @@
+Feature: login page of facebook
+
+  Scenario: Test login page elements is displayed
+        Given I want to use the chrome browser
+        When I access facebook url
+        Then I see facebook login page
+
+  Scenario: Facebook Login page Fields validation
+        When I entered Facebook Login Page
+        And I entered email
+        And I entered password
+#       And I clicked on login button
+        And I entered Firstname
+        And I entered Surname
+        And I entered Mobile number or email address
+        And I entered newpassword
+        And I entered birthday_day
+        And I entered birthday_month
+        And I entered birthday_year
+#        And I clicked on Submit button
+        Then I see facebook homepage
+
+  Scenario: Login without password
+        When I type archanasudani@gmail.com in the username input field
+        And I clicked on login button
+        Then I see the login error message please provide a password
+
+  Scenario: Login with bad password
+        When I enter archanasudani@gmail.com in the username input field
+        And  I type India@1234567 in the password input field
+        And  I click the login button
+        Then I see the login error message The password provided does not match the username entered
+
+    Scenario: Successful login
+        When I give valid username in  the  username input field
+        And  I give valid password in the password input field
+        And  I click the facebook login button
+        Then I see login page is launched
